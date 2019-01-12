@@ -12,9 +12,9 @@ const sinwonInfo = {
         }
     ]
 }
-Adius = [{ Name : 'sinwon', type : 'horrible' }]
+Adius = [{ Name : 'sinwon', type : 'horrible' },{Name : 'dave', type : 'humid'}];
 
-
+const dataArray =['a','b','c','d','e'];
 
 console.log(sinwonInfo.arrayInf[0].Name);
-console.log(Adius[0].Name);
+console.log(Adius[1].Name);
