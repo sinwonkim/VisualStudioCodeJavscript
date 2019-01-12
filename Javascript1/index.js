@@ -1,5 +1,3 @@
-let a = 221;
-let b = a - 5;
-a = 4
-console.log(b,a);
-
+const dayOfweek = ['Mon','Tue','wed','Thu','fri','sat','sun'];
+console.log(dayOfweek);
+console.log(dayOfweek[2]);
