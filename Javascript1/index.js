@@ -1,7 +1,21 @@
-const title =  document.getElementById('title');
+const title = document.querySelector('#title');
 
-function handleClick(){ //이벤트가 발생할 떄마다 이벤트 객체가 호출됨
-    title.style.color = "blue";
+const BASE_COLOR = "blue";
+const OTHER_COLOR = "#7f8c8d";
+
+function handeClick() { //3
+    const  currentColor = title.style.color; // 3-2
+    if (currentColor === BASE_COLOR){ // 3-3
+        title.style.color = OTHER_COLOR;
+    } else { // 3-4
+        title.style.color = BASE_COLOR;
+    }
+    
 }
 
-title.addEventListener("click",handleClick); //handleResize함수를  이벤트로 add함 
+function init() {  // 2
+    title.style.color = BASE_COLOR; // 2-1
+    title.addEventListener("click",handeClick); // 2-2
+}
+
+init(); // 실행 1
