@@ -5,7 +5,21 @@ const toDOform = document.querySelector(".js-toDoForm"),
 
 const TODOS_LS = "toDos";
 
-const toDos = [];
+
+let toDos = [];
+
+// 버튼 눌렀을 때  li 삭제하는 함수
+function deleteToDo(event) {
+    const btn = event.target;
+    const li = btn.parentNode; //지워야할 parent 노드를 찾음
+    toDoList.removeChild(li);
+    const cleanToDos = toDos.filter(function(toDo){
+        return toDo.id != parseInt(li.id);
+    });
+    toDos = cleanToDos; // 삭제된 내용을 담고
+    saveToDos(); // 다시 저장 
+}
+
 
 function saveToDos() {
     localStorage.setItem(TODOS_LS,JSON.stringify(toDos)); // key,value 
@@ -16,6 +30,7 @@ function paintToDo(text) {
     const li =  document.createElement("li");
     const delBtn = document.createElement("button");
     delBtn.innerHTML = "X";
+    delBtn.addEventListener("click",deleteToDo); // delBtn 클릭했을때 발생
     const span = document.createElement("span");
     const newId = toDos.length + 1; 
     span.innerText = text
@@ -43,8 +58,8 @@ function loadToDos() {
     const loadedToDos =  localStorage.getItem(TODOS_LS);
     if (loadedToDos !== null) {  
         const parsedToDos = JSON.parse(loadedToDos); //JSON.parse 는 string 객체를 json객체로 변환 
-        parsedToDos.forEach(function(toDo){ //array가 가진것 중에 forEach는 기본적으로 함수를 실행  array에 담겨 있는 것들 각각에 
-                                              // 한번씩 함수를 실행 시켜줌   프로퍼티 리스너 방식인듯 
+        parsedToDos.forEach(function(toDo){ // forEach함수는 list에 있는 모든 item을 위한 함수를 실행시키는 것 
+                                             
            paintToDo(toDo.text);                         
         });
     } 
