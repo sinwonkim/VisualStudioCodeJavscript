@@ -21,7 +21,7 @@ function handleSubmit(event){
 // 이름이 입력 하는거 보여주고  form 태그에 전송 
 function askForName(){
     form.classList.add(SHOWING_CN);
-    form.addEventListener("submit",handleSubmit)
+    form.addEventListener("submit",handleSubmit);
 }
 
 function paintGreeting(text) {
